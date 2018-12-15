@@ -1,0 +1,19 @@
+
+
+syntax = "proto3";
+
+package platon.block;
+
+option java_package = "org.platon.core.proto";
+option java_outer_classname = "BlockInfoProto";
+option java_multiple_files = true;
+
+message BlockInfo {
+    bytes hash                  = 1;
+    bool mainChain              = 2;
+    bytes totalDifficulty       = 3;
+}
+
+message BlockInfoList {
+    repeated BlockInfo blockInfoList    = 1;
+}

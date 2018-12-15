@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package platon.account;
+
+option java_package = "org.platon.core.proto";
+option java_outer_classname = "AccountMessage";
+option java_string_check_utf8 = true;
+option java_multiple_files = true;
+
+message AccountProto {
+    bytes balance = 1;
+    bytes extraRoot = 2;
+    bytes binHash = 3;
+    bytes permissionRoot = 4;
+}
+
+message PermissionAddrProto {
+    BytesList addressList = 1;
+    BytesList urlList = 2;
+}
+message BytesList {
+    repeated bytes ele=1;
+}

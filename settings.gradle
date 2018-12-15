@@ -1,0 +1,13 @@
+rootProject.name = 'platon'
+include 'slice'
+include 'account'
+include 'vm'
+include 'storage'
+include 'crypto'
+include 'consensus'
+include 'core'
+include 'common'
+include 'p2p'
+include 'trie'
+include 'tests'
+

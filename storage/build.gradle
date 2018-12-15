@@ -1,0 +1,21 @@
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":slice")
+    compile project(":crypto")
+    compile "org.iq80.leveldb:leveldb:0.10"             //LevelDB
+    compile "org.rocksdb:rocksdbjni:5.11.3"             //RocksDB
+    compile "com.google.protobuf:protobuf-java:3.5.1"
+    compile "org.bouncycastle:bcprov-jdk15on:1.59"
+    testCompile "org.springframework:spring-test:${springVersion}"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task createJavaProject << {
+    sourceSets*.java.srcDirs*.each{ it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each{ it.mkdirs()}
+}

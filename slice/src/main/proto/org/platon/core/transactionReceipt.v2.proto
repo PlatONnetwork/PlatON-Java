@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+
+
+package platon.tx;
+
+option java_package = "org.platon.core.transaction.proto";
+option java_outer_classname = "TransactionReceiptProto";
+
+message LogEntry {
+    bytes address		= 1;
+    repeated  bytes topic	= 2;
+    bytes data		= 3;
+}
+
+message TransactionReceiptBase {
+    bytes energonUsed      	= 1;
+    bytes cumulativeEnergon	= 2;
+    bytes stateRoot		= 3;
+    bytes bloomFilter		= 4;
+    bytes executionResult	= 5;
+    repeated LogEntry logs      	= 6;
+
+
+
+
+
+
+}

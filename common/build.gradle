@@ -1,0 +1,26 @@
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile project(':slice')
+    compile "com.google.guava:guava:24.1-jre"
+
+    compile "com.madgag.spongycastle:core:1.58.0.0" // for SHA3 and SECP256K1
+    compile "com.madgag.spongycastle:prov:1.58.0.0" // for SHA3 and SECP256K1
+    compile "com.fasterxml.jackson.core:jackson-databind:2.5.1"
+    compile "com.fasterxml.jackson.core:jackson-annotations:2.5.0"
+    compile "org.apache.commons:commons-collections4:4.0"
+
+    compile "com.cedarsoftware:java-util:1.8.0"
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task createJavaProject << {
+    sourceSets*.java.srcDirs*.each{ it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each{ it.mkdirs()}
+}

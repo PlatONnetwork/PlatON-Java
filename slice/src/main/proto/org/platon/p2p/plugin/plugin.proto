@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+package org.platon.p2p.proto.plugin;
+
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.plugin";
+option java_outer_classname = "PluginProtos";
+
+message JoinMessage {
+    org.platon.p2p.proto.common.NodeID nodeId = 1;
+}
+
+message JoinRespMessage {
+    repeated org.platon.p2p.proto.common.NodeID nodeId = 1;
+}
+
+message QueryMessage {
+    org.platon.p2p.proto.common.RoutableID routableId = 1;
+}
+
+
+message QueryRespMessage {
+   repeated org.platon.p2p.proto.common.NodeID nodeId = 1;
+}
+

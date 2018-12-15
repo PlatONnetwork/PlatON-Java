@@ -1,0 +1,30 @@
+archivesBaseName = "${rootProject.name}-p2p"
+
+dependencies {
+    compile project(":slice")
+    compile project(":common")
+    compile project(":crypto")
+    compile(
+            "commons-collections:commons-collections:3.2.2",
+            'org.apache.commons:commons-configuration2:2.2',
+            "org.apache.commons:commons-lang3:3.5",
+            'org.apache.httpcomponents:httpclient:4.5.3',
+            "commons-codec:commons-codec:1.10",
+            'commons-configuration:commons-configuration:1.10',
+            'org.lmdbjava:lmdbjava:0.6.0',
+            'com.alibaba:fastjson:1.2.29'
+    )
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.28.Final'
+
+    // https://mvnrepository.com/artifact/org.reflections/reflections
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
+}
+
+
+buildscript {
+    repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
+    }
+}

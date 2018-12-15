@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+package org.platon.p2p.proto.session;
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.session";
+option java_outer_classname = "SessionProtos";
+
+message CreateSession {
+    bytes clientNodeId = 1;
+
+
+    string endpoint = 2;
+
+
+    bytes messageHash = 3;
+
+
+    bytes signature = 4;
+}
+
+message SayHello {
+    bytes nodeId = 1;
+    string hello = 2;
+    bool feedback = 3;
+}

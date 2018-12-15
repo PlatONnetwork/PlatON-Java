@@ -1,0 +1,31 @@
+
+syntax = "proto3";
+package org.platon.p2p.proto.platon;
+import "google/protobuf/any.proto";
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.platon";
+option java_outer_classname = "PlatonProtos";
+
+message Header {
+    string version = 1;
+    string txId = 2;
+    repeated org.platon.p2p.proto.common.NodeID via = 3;
+    repeated org.platon.p2p.proto.common.RoutableID dest = 4;
+    int32 ttl = 5;
+    string msgType = 6;
+
+}
+
+message Body {
+    google.protobuf.Any data = 1;
+}
+
+message PlatonMessage {
+    Header header = 1;
+    Body body = 2;
+}
+
+

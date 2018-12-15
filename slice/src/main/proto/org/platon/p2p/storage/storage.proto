@@ -1,0 +1,129 @@
+
+syntax = "proto3";
+
+package org.platon.p2p.proto.storage;
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.storage";
+option java_outer_classname = "StorageProtos";
+
+enum StoreStatus {
+    SUCCESS = 0;
+    FAILED = 1;
+};
+
+message StoredData {
+    int64 storageTime = 1;
+    int64 lifeTime = 2;
+    bytes key = 3;
+    bytes value = 4;
+    bytes signature = 5;
+}
+
+message StoreDataEntry {
+    int32 replica = 1;
+    repeated org.platon.p2p.proto.common.RoutableID replicaNodeId = 2;
+    org.platon.p2p.proto.common.ResourceID resourceId = 3;
+    StoredData storedData = 4;
+}
+
+
+message SetStoreMessage {
+    int32 replica = 1;
+    repeated org.platon.p2p.proto.common.RoutableID replicaNodeId = 2;
+    org.platon.p2p.proto.common.ResourceID resourceId = 3;
+    StoredData storedData = 4;
+}
+
+message SetStoreRespMessage {
+    StoreStatus status = 1;
+    string error = 2;
+}
+
+
+message GetStoreMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+}
+
+message GetStoreRespMessage {
+    StoredData storedData = 1;
+}
+
+
+
+message DelStoreMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+}
+
+message DelStoreRespMessage {
+    StoreStatus status = 1;
+    string error = 2;
+}
+
+
+message HashStoreDataEntry {
+    int32 replica = 1;
+    repeated org.platon.p2p.proto.common.RoutableID replicaNodeId = 2;
+    org.platon.p2p.proto.common.ResourceID resourceId = 3;
+    StoredData storedData = 4;
+    bytes key = 5;
+}
+
+
+message HSetStoreMessage {
+    int32 replica = 1;
+    repeated org.platon.p2p.proto.common.RoutableID replicaNodeId = 2;
+    org.platon.p2p.proto.common.ResourceID resourceId = 3;
+    StoredData storedData = 4;
+    bytes key = 5;
+}
+
+message HSetStoreRespMessage {
+    StoreStatus status = 1;
+    string error = 2;
+}
+
+
+
+
+message HGetStoreMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+    bytes key = 2;
+}
+
+message HGetStoreRespMessage {
+    repeated StoredData storedData = 1;
+}
+
+
+message HGetAllStoreMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+}
+
+message HGetAllStoreRespMessage {
+    repeated StoredData storedData = 1;
+}
+
+
+
+
+message HDelStoreMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+    bytes key = 2;
+}
+
+message HDelStoreRespMessage {
+    StoreStatus status = 1;
+    string error = 2;
+}
+
+
+
+
+
+
+
+
+
