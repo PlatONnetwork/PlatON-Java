@@ -1,0 +1,83 @@
+
+syntax = "proto3";
+package org.platon.p2p.proto.pubsub;
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.pubsub";
+option java_outer_classname = "PubsubProtos";
+
+message SubMessage {
+
+    string topic = 1;
+
+
+    bool sub = 2;
+
+
+    bytes nodeId = 3;
+}
+
+message EntryMessage {
+
+    bytes fromNodeId = 1;
+
+
+    string key = 2;
+
+
+    string topic = 3;
+
+
+    bytes data = 4;
+}
+
+message IHaveMessage {
+
+    string topic = 1;
+
+
+    repeated string messageId = 2;
+}
+
+
+message IWantMessage {
+
+    string topic = 1;
+
+
+    repeated string messageId = 2;
+}
+
+message GraftMessage {
+
+    repeated string topic = 1;
+
+
+    bytes nodeId = 2;
+}
+
+
+message PruneMessage {
+
+    bytes nodeId = 1;
+
+
+    repeated string topic = 2;
+}
+
+
+message ControlMessage {
+    repeated IHaveMessage ihave = 1;
+    repeated IWantMessage iwant = 2;
+    GraftMessage graft = 3;
+    PruneMessage prune = 4;
+}
+
+message TopicMessage {
+    bytes fromNodeId = 1;
+    SubMessage subscribe = 2;
+    repeated EntryMessage publishedEntry = 3;
+    ControlMessage control = 4;
+}

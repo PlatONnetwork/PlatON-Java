@@ -1,0 +1,16 @@
+
+syntax = "proto3";
+package org.platon.p2p.proto.consensus;
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.consensus";
+option java_outer_classname = "Bftprotos";
+
+
+message PrepareAckMessage {
+    bytes blockHash = 1;
+    bytes signature = 2;
+}
+
+

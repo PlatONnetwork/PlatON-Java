@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="1 seconds">
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} %-5level %thread %logger{36} - %msg %n</Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
+
+    <!--<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<File>../logs/crypto.log</File>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>../logs/crypto_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+            <!--<maxHistory>30</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <root>
+        <level value="TRACE" />
+        <appender-ref ref="console" />
+        <!--<appender-ref ref="fileAppender" />-->
+    </root>
+
+    <logger name="org.platon.p2p.*" level="TRACE" />
+
+</configuration>

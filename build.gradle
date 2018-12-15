@@ -1,0 +1,64 @@
+subprojects {
+
+    group 'org.platon'
+    version '0.1.0-SNAPSHOT'
+
+    /** load plugin */
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    compileJava.options.encoding = 'UTF-8'
+    compileJava.options.compilerArgs << '-XDignore.symbol.file'
+    compileTestJava.options.encoding = 'UTF-8'
+
+    ext {
+        iceVersion = '3.7.1'
+        springVersion = '4.2.0.RELEASE'
+    }
+
+    /** define resp  */
+    repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
+    }
+
+    /** define common dependency */
+    dependencies {
+        compile "ch.qos.logback:logback-classic:1.1.7"
+        compile "ch.qos.logback:logback-core:1.1.7"
+        compile "org.slf4j:slf4j-api:1.7.7"
+        compile "org.slf4j:slf4j-api:1.7.7"
+        compile "org.slf4j:log4j-over-slf4j:1.7.7"
+        compile "org.slf4j:jul-to-slf4j:1.7.7"
+        compile "org.slf4j:jcl-over-slf4j:1.7.7"
+
+        // spring define
+        compile "org.springframework:spring-context:${springVersion}"
+        compile "org.springframework:spring-orm:${springVersion}"
+        compile "org.springframework:spring-tx:${springVersion}"
+
+        // config
+        compile "com.typesafe:config:1.2.1"
+        compile "com.googlecode.concurrent-locks:concurrent-locks:1.0.0"
+
+        testCompile "org.springframework:spring-test:${springVersion}"
+        testCompile "org.mockito:mockito-core:2.19.1"
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+        testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
+        testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
+    }
+
+    task "create-dir" << {
+        sourceSets*.java.srcDirs*.each {
+            it.mkdirs()
+        }
+        sourceSets*.resources.srcDirs*.each {
+            it.mkdirs()
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.7"
+}

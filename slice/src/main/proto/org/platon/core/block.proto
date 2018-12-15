@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "org.platon.core.block.proto";
+option java_outer_classname = "BlockProto";
+
+message Block {
+    bytes headerbytes                  = 1;
+    repeated bytes transactionbytes   = 2;
+    repeated bytes unclesbytes        = 3;
+    repeated bytes signatures         = 4;
+}
+
+message BlockInfo {
+    int64   number                 = 1;
+    bytes   totalDifficulty        = 2;
+    bytes   parentHash             = 3;
+    repeated bytes children       = 4;
+    repeated bytes bloomlog       = 5;
+}
+
+message TransactionPosition {
+    bytes   blockHash              = 1;
+    int32   index                  = 2;
+}
+message BlockReceipts {
+    repeated bytes txreceipts     = 1;
+}

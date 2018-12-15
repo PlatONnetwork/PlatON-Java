@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+import "org/platon/core/message/request.proto";
+import "org/platon/core/message/response.proto";
+
+package platon.service.grpc;
+
+option java_package = "org.platon.service.grpc";
+option java_multiple_files = true;
+option java_outer_classname = "PlatonGrpcService";
+option objc_class_prefix = "ATP";
+
+service PlatonService {
+    
+    rpc SayHello(MessageRequest) returns (MessageResponse) {}
+
+    rpc SayHelloWithReqStream(stream MessageRequest) returns (MessageResponse){}
+
+    rpc SayHelloWithRespStream(MessageRequest) returns (stream MessageResponse){}
+
+    rpc SayHelloWithBothStream(stream MessageRequest) returns (stream MessageResponse){}
+    
+
+    rpc atpCall(platon.message.TransactionBaseRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpSendTransaction(platon.message.TransactionBaseRequest ) returns(platon.message.BaseResponse){}
+
+    rpc atpGetTransactionReceiptByHash(platon.message.GetTransactionReceiptByHashRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpSendFillTransaction(platon.message.TransactionBaseRequest ) returns(platon.message.BaseResponse){}
+
+    rpc atpEnergonPrice(platon.message.VoidRequest) returns (platon.message.BaseResponse){}
+
+    rpc atpGetTransactionCount(platon.message.GetTransactionCountRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpProtocolVersion(platon.message.VoidRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpCoinbase(platon.message.VoidRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpAccounts(platon.message.VoidRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpBlockNumber(platon.message.VoidRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetBalance(platon.message.GetBalanceRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetBlockTransactionCountByHash(platon.message.GetBlockTransactionCountByHashRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetBlockTransactionCountByNumber(platon.message.GetBlockTransactionCountByNumberRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetBlockByHash(platon.message.GetBlockByHashRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetBlockByNumber(platon.message.GetBlockByNumberRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetTransactionByHash(platon.message.GetTransactionByHashRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetTransactionByBlockHashAndIndex(platon.message.GetTransactionByBlockHashAndIndexRequest) returns(platon.message.BaseResponse){}
+
+    rpc atpGetTransactionByBlockNumberAndIndex(platon.message.GetTransactionByBlockNumberAndIndexRequest) returns(platon.message.BaseResponse){}
+
+}
+
+
+message MessageRequest {
+    string name = 1;
+}
+
+
+message MessageResponse {
+    sint64 age = 1;
+}

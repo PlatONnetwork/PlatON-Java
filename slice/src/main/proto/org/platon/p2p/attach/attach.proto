@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package org.platon.p2p.proto.attach;
+
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.attach";
+option java_outer_classname = "AttachProtos";
+
+message AttachMessage {
+    org.platon.p2p.proto.common.NodeID nodeId = 1;
+}
+
+message AttachRespMessage {
+    org.platon.p2p.proto.common.NodeID nodeId = 1;
+}
+
+message PingMessage {
+    int32 payloadLength = 1;
+}
+
+message PongMessage {
+    int64 responseId = 1;
+    int64 responseTime = 2;
+}

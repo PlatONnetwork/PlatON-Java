@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+
+
+option java_package = "org.platon.core.block.proto";
+option java_outer_classname = "BlockHeaderProto";
+
+
+message BlockHeader {
+    int64 timestamp            = 1;
+    int64 number               = 2;
+    bytes parentHash           = 3;
+    bytes stateRoot            = 4;
+    bytes permissionRoot       = 5;
+    bytes dposRoot             = 6;
+    bytes transactionRoot      = 7;
+    bytes transferRoot         = 8;
+    bytes votingRoot           = 9;
+    bytes receiptRoot          = 10;
+    bytes bloomLog             = 11;
+    bytes energonUsed          = 12;
+    bytes energonCeiling       = 13;
+    bytes difficulty           = 14;
+    bytes extraData            = 15;
+    bytes author               = 16;
+    bytes coinbase             = 17;
+}

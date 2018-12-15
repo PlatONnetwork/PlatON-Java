@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package platon.tx;
+
+import "google/protobuf/any.proto";
+
+option java_package = "org.platon.core.transaction.proto";
+option java_outer_classname = "TransactionProto";
+option java_multiple_files = true;
+
+enum TransactionType {
+    TRANSACTION 		= 0;
+    VOTE 		        = 1;
+    CONTRACT_DEPLOY 	= 2;
+    CONTRACT_CALL 	    = 3;
+    TRANSACTION_MPC 	= 4;
+    QUERY_CALL 		    = 5;
+    PERMISSION_UPDATE 	= 6;
+}
+
+message TransactionBody {
+    TransactionType type   	    = 1;
+    bytes value             	= 2;
+    bytes receiveAddress        = 3;
+
+    int64 referenceBlockNum 	= 6;
+    bytes referenceBlockHash	= 7;
+    bytes energonPrice      	= 8;
+    bytes energonLimit      	= 9;
+    google.protobuf.Any data	= 10;
+}
+
+message Transaction {
+    TransactionBody body        = 1;
+    bytes signature         	= 2;
+}
+
+
+message ContractDeployRequest {
+    string className        	= 1;
+    bytes data              	= 2;
+}
+
+message ContractRequest {
+    string operation        	= 1;
+    string className        	= 2;
+    bytes data                  = 3;
+}
+
+message MPCTransactionRequest {
+    string operation        = 1;
+    string className        = 2;
+    bytes data              = 3;
+    repeated string partners= 4;
+    repeated string results = 5;
+    bytes inData            = 6;
+    map<string,string> nodeIdAddrMap= 7;
+    string algorithmId      = 8;
+    map<string,string> extraArgs = 9;
+    string mpcContractAddr  = 10;
+}
+
+
+message defaultRequestData {
+    bytes data              	= 1;
+}

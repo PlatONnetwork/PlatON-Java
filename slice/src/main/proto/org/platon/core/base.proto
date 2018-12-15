@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "org.platon.common.proto";
+option java_outer_classname = "BaseProto";
+
+message BaseInt {
+    int32 intData                  = 1;
+}
+
+message BaseLong {
+    int64 longData                  = 1;
+}
+
+message BaseString {
+    string stringData                  = 1;
+}
+
+message BaseBytesList {
+    repeated bytes bytesListData                  = 1;
+}

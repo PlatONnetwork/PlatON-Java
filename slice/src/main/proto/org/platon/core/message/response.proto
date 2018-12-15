@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package platon.message;
+
+option java_package = "org.platon.slice.message.response";
+option java_outer_classname = "ResponseMessage";
+option java_string_check_utf8 = true;
+option java_multiple_files = true;
+
+import "google/protobuf/any.proto";
+import "org/platon/core/message/errno.proto";
+
+message BaseResponse {
+    platon.message.ResultCode code = 1;
+    string msg              = 2;
+    google.protobuf.Any data= 10;
+}
+
+message TransactionResponse {
+    string hash              = 1;
+    string blockHash         = 2;
+    int64 blockNumber        = 3;
+    int32 transactionIndex   = 4;
+    string from              = 5;
+    string to                = 6;
+    bytes value              = 7;
+    bytes energonPrice       = 8;
+    bytes energonLimit       = 9;
+    string input             = 10;
+
+}
+
+message TransactionReceiptResponse {
+    string transactionhash      = 1;
+    int32 transactionIndex      = 2;
+    string blockHash            = 3;
+    int64 blockNumber           = 4;
+    string from                 = 5;
+    string to                   = 6;
+    bytes cumulativeEnergonUsed = 7;
+    bytes energonUsed           = 8;
+    string contractAddr         = 9;
+    repeated LogEntry logs      = 10;
+}
+
+message LogEntry {
+    string blockHash            = 1;
+    string address              = 2;
+    string logIndex             = 3;
+    string data                 = 4;
+    repeated string topics      = 5;
+    int64 blockNumber           = 6;
+    int32 transactionIndex      = 7;
+    string transactionHash      = 8;
+}
+
+message BlockResponse {
+    int64 blockNumber           = 1;
+    string hash                 = 2;
+    string parentHash           = 3;
+    string logsBloom            = 5;
+    string transactionsRoot     = 6;
+    string stateRoot            = 7;
+    string receiptsRoot         = 8;
+    string miner                = 9;
+    int64 difficulty            = 10;
+    int64 totalDifficulty       = 11;
+    string extraData            = 12;
+    int64 size                  = 13;
+    bytes energonLimit         = 14;
+    bytes energonUsed          = 15;
+    int64 timestamp             = 16;
+    repeated string transactions= 17;
+
+    reserved 20 to 30 ;
+    reserved "uncles","nonce","sha3Uncles";
+
+}
+
+message SyncingResultResponse {
+    string startingBlock        = 1;
+    string currentBlock         = 2;
+    string highestBlock         = 3;
+}
+
+message StringResponse {
+    string data                 = 1;
+}
+
+message IntResponse {
+    int64 data                  = 1;
+}
+
+message BoolResponse {
+    bool data                   = 1;
+}
+
+message StringArrayResponse {
+    repeated string data        = 1;
+}

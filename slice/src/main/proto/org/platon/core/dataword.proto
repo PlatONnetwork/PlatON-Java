@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package platon.block;
+
+
+option java_package = "org.platon.core.proto";
+option java_outer_classname = "DatawordProto";
+option java_multiple_files = true;
+
+message DataWordMessage {
+    bytes data      = 1;
+}
+
+message EmptyBytesMessage {
+    bytes data      = 1;
+}
+
+message IntMessage {
+    int32 data      = 1;
+}
+
+
+message BlockIdentifierMessage {
+    bytes hash      = 1;
+    int64 number    = 2;
+}

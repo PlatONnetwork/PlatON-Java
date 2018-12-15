@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <context:property-placeholder location="classpath:config/*.properties" file-encoding="UTF-8"/>
+
+    <bean id="springContextUtil" class="org.platon.common.utils.SpringContextUtil"/>
+
+    <bean id="levelDB" class="org.platon.storage.datasource.leveldb.LevelDBSource" init-method="open" destroy-method="close">
+        <constructor-arg index="0" value="test"/>
+        <constructor-arg index="1" value="${leveldbPath}"/>
+    </bean>
+
+    <bean id="rocksDB" class="org.platon.storage.datasource.rocksdb.RocksDBSource" init-method="open" destroy-method="close">
+        <constructor-arg index="0" value="test"/>
+        <constructor-arg index="1" value="${rocksdbPath}"/>
+    </bean>
+
+    <bean id="cacheDB" class="org.platon.storage.datasource.NoDeleteSource">
+        <constructor-arg index="0" ref="rocksDB"/>
+    </bean>
+
+</beans>

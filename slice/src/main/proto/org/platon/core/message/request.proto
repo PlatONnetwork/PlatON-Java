@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package platon.message;
+
+
+import "org/platon/core/transaction.v2.proto";
+
+option java_package = "org.platon.slice.message.request";
+option java_outer_classname = "TransactionRequestProto";
+option java_string_check_utf8 = true;
+option java_multiple_files = true;
+
+message TransactionBaseRequest {
+    platon.tx.TransactionBody body    = 1;
+    string signature        = 2;
+    string from             = 3;
+}
+
+message GetTransactionReceiptByHashRequest{
+    string txHash           = 1;
+}
+
+message VoidRequest {
+
+}
+
+message GetTransactionCountRequest{
+    string address          = 1;
+    string blockParams      = 2;
+}
+
+message GetBalanceRequest{
+    string address          = 1;
+    string blockParams      = 2;
+}
+
+message GetBlockTransactionCountByHashRequest {
+    string blockHash        = 1;
+}
+
+message GetBlockTransactionCountByNumberRequest {
+    string blockNumber      = 1;
+}
+
+message GetBlockByHashRequest {
+    string blockHash        = 1;
+    bool returnFull         = 2;
+}
+
+message GetBlockByNumberRequest{
+    string blockNumber      = 1;
+    bool returnFull         = 2;
+}
+
+message GetTransactionByHashRequest {
+    string txHash           = 1;
+}
+
+message GetTransactionByBlockHashAndIndexRequest {
+    string blockHash        = 1;
+    sint64 index            = 2;
+}
+
+message GetTransactionByBlockNumberAndIndexRequest {
+    string blockNumber      = 1;
+    sint64 index            = 2;
+}

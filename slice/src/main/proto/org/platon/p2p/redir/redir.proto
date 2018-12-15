@@ -1,0 +1,40 @@
+
+syntax = "proto3";
+
+package org.platon.p2p.proto.redir;
+import "org/platon/p2p/common/common.proto";
+
+
+option java_multiple_files = true;
+option java_package = "org.platon.p2p.proto.redir";
+option java_outer_classname = "RedirProtos";
+
+
+
+message ServiceEntry {
+    string serviceType = 1;
+    string describe = 2;
+    string sourceKey = 3;
+    string from = 4;
+    string url = 5;
+}
+
+message ReDiRMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+    ServiceEntry entry = 2;
+}
+message ReDiRRespMessage {
+    repeated string key = 1;
+}
+
+message ReDiRFindMessage {
+    org.platon.p2p.proto.common.ResourceID resourceId = 1;
+    string findKey = 2;
+}
+
+message ReDiRFindRespMessage {
+   org.platon.p2p.proto.common.ResourceID resourceId = 1;
+   repeated ServiceEntry entry = 2;
+   repeated string key = 3;
+}
+

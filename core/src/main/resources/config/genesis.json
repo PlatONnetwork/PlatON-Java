@@ -1,0 +1,16 @@
+{
+  "config": {
+    "consensus": "Noproof",
+    "energonLimit": "1388"
+  },
+  "accounts": {
+    "5f2ae1c60a3038956cf3355960cb211de78bab50": {
+      "balance": "10000000000000000000000"
+    }
+  },
+  "autor": "5f2ae1c60a3038956cf3355960cb211de78bab50",
+  "coinbase" : "5f2ae1c60a3038956cf3355960cb211de78bab50",
+  "timestamp": "1533872936173",
+  "parentHash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "energonLimit": "1388"
+}

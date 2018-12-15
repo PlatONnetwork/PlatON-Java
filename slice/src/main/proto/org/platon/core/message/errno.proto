@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package platon.message;
+
+option java_package = "org.platon.slice.message";
+option java_outer_classname = "ResultCodeMessage";
+option java_string_check_utf8 = true;
+
+enum ResultCode {
+    SUCCESS = 0;
+    FAIL = 1;
+}
