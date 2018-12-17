@@ -1,5 +1,7 @@
 # Welcome to PlatON-Java
 
+For more information, please visit our [wiki](https://github.com/PlatONnetwork/wiki/wiki).
+
 # About
 
 PlatON-Java is a pure-Java implementation of the PlatON protocol. 
@@ -23,4 +25,3 @@ PlatON-Java is a pure-Java implementation of the PlatON protocol.
 
 # License
 PlatON-Java is released under the [LGPL-V3 license](LICENSE).
-
